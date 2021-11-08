@@ -37,6 +37,7 @@ func main() {
 	for i := 0; i < 3; i++ {
 		ch := make(chan int)
 		go func(id int, c chan int) {
+			defer close(c)
 			for {
 				c <- id
 				time.Sleep(1 * time.Second)
